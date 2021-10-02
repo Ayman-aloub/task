@@ -31,16 +31,12 @@ class Reviews_provider with ChangeNotifier {
         countReviwsfive++;
       }
     });
-    appReview = ((countReviwsOne * 1 +
-                countReviwsTwo * 2 +
-                countReviwsThree * 3 +
-                countReviwsfour * 4 +
-                countReviwsfive * 5) /
-            (countReviwsOne +
-                countReviwsTwo +
-                countReviwsThree +
-                countReviwsfour +
-                countReviwsfive) *
+    appReview = (((countReviwsOne * 1 +
+                    countReviwsTwo * 2 +
+                    countReviwsThree * 3 +
+                    countReviwsfour * 4 +
+                    countReviwsfive * 5) /
+                (reviews.length * 5)) *
             5)
         .toInt();
     notifyListeners();
