@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/providers/customerprovider.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter_app_test/models/review.dart';
@@ -117,8 +118,12 @@ class _addNewReviewState extends State<addNewReview> {
                               rate: rate,
                               comment: _textController.text,
                               date: DateTime.now(),
-                              name: 'Ammed Mohammed Ali',
-                              imageUrl: 'http://via.placeholder.com/350x150'));
+                              name: Provider.of<Customer_provider>(context)
+                                  .customer!
+                                  .name,
+                              imageUrl: Provider.of<Customer_provider>(context)
+                                  .customer!
+                                  .imageUrl));
                       Navigator.of(context).pop();
 
                       //_textController.dispose();
