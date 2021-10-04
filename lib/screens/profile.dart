@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/providers/customerprovider.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class Portfilo extends StatefulWidget {
   const Portfilo({Key? key}) : super(key: key);
@@ -30,7 +32,7 @@ class _PortfiloState extends State<Portfilo> {
           elevation: 0.0,
           title: Center(
             child: Text(
-              'My review',
+              'My profile',
               style: TextStyle(
                 color: Colors.black87,
                 fontSize: 15,
@@ -57,14 +59,16 @@ class _PortfiloState extends State<Portfilo> {
                       children: [
                         ClipOval(
                           child: Image.network(
-                            'http://via.placeholder.com/350x150',
+                            Provider.of<Customer_provider>(context)
+                                .customer!
+                                .imageUrl,
                             height: 130,
                             width: 130,
                             fit: BoxFit.cover,
                           ),
                         ),
                         Align(
-                            alignment: Alignment.bottomLeft,
+                            alignment: Alignment.bottomRight,
                             child: InkWell(
                               onTap: () {
                                 print('ssssssssssssssssss');
@@ -86,6 +90,12 @@ class _PortfiloState extends State<Portfilo> {
                                               Navigator.pop(context);
                                               image = await _picker.pickImage(
                                                   source: ImageSource.gallery);
+                                              if (image != null) {
+                                                Provider.of<Customer_provider>(
+                                                        context,
+                                                        listen: false)
+                                                    .updateImage(image!);
+                                              }
                                               // Capture a photo
                                             },
                                             child: const Text('gallery'),
@@ -95,6 +105,11 @@ class _PortfiloState extends State<Portfilo> {
                                               Navigator.pop(context);
                                               image = await _picker.pickImage(
                                                   source: ImageSource.camera);
+                                              if (image != null) {
+                                                Provider.of<Customer_provider>(
+                                                        context)
+                                                    .updateImage(image!);
+                                              }
                                             },
                                             child: const Text('camera'),
                                           ),
@@ -126,7 +141,8 @@ class _PortfiloState extends State<Portfilo> {
                     //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding:
+                            const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
                         child: ListTile(
                           leading: Icon(
                             Icons.person,
@@ -139,7 +155,9 @@ class _PortfiloState extends State<Portfilo> {
                                 fontSize: 12.0, color: Colors.black45),
                           ),
                           subtitle: Text(
-                            'Ammed Mohammed Ali',
+                            Provider.of<Customer_provider>(context)
+                                .customer!
+                                .name,
                             style:
                                 TextStyle(fontSize: 17.0, color: Colors.black),
                           ),
@@ -171,7 +189,7 @@ class _PortfiloState extends State<Portfilo> {
                                                         value.isEmpty) {
                                                       return 'Please enter your name';
                                                     } else if (value.length >
-                                                        30) {
+                                                        14) {
                                                       return 'your name is so long';
                                                     }
                                                   },
@@ -197,6 +215,12 @@ class _PortfiloState extends State<Portfilo> {
                                                       if (_formKey.currentState!
                                                           .validate()) {
                                                         /*update name on server and local provider */
+                                                        Provider.of<Customer_provider>(
+                                                                context,
+                                                                listen: false)
+                                                            .updateName(
+                                                                _nameController
+                                                                    .text);
                                                         Navigator.pop(context);
                                                       }
 
@@ -226,7 +250,8 @@ class _PortfiloState extends State<Portfilo> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding:
+                            const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
                         child: ListTile(
                           leading: Icon(
                             Icons.phone,
@@ -239,7 +264,9 @@ class _PortfiloState extends State<Portfilo> {
                                 fontSize: 12.0, color: Colors.black45),
                           ),
                           subtitle: Text(
-                            '01141366366',
+                            Provider.of<Customer_provider>(context)
+                                .customer!
+                                .phone,
                             style:
                                 TextStyle(fontSize: 17.0, color: Colors.black),
                           ),
@@ -256,6 +283,9 @@ class _PortfiloState extends State<Portfilo> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(20.0),
                                           child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
                                             children: [
                                               Form(
                                                 key: _formKey,
@@ -267,9 +297,9 @@ class _PortfiloState extends State<Portfilo> {
                                                     if (value == null ||
                                                         value.isEmpty) {
                                                       return 'Please enter your phone number';
-                                                    } else if (value.length !=
-                                                        11) {
-                                                      return 'enter 11 number ';
+                                                    } else if (value.length >
+                                                        10) {
+                                                      return 'enter more than 10 number ';
                                                     }
                                                   },
                                                   controller: _phoneController,
@@ -294,6 +324,12 @@ class _PortfiloState extends State<Portfilo> {
                                                       if (_formKey.currentState!
                                                           .validate()) {
                                                         /*update name on server and local provider */
+                                                        Provider.of<Customer_provider>(
+                                                                context,
+                                                                listen: false)
+                                                            .updatePhone(
+                                                                _phoneController
+                                                                    .text);
                                                         Navigator.pop(context);
                                                       }
 
