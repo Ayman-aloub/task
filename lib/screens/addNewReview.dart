@@ -32,7 +32,10 @@ class _addNewReviewState extends State<addNewReview> {
           title: Center(
             child: Text(
               'My review',
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(
+                color: Colors.black87,
+                fontSize: 15,
+              ),
             ),
           ),
           leading: IconButton(
