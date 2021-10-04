@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/providers/Reviews_provider.dart';
 import 'package:flutter_app_test/screens/addNewReview.dart';
+import 'package:flutter_app_test/screens/profile.dart';
 import 'package:flutter_app_test/screens/reviews.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
-        home: Reviews_screen(),
+        home: Portfilo(),
       ),
     );
   }
