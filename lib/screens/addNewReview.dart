@@ -111,6 +111,10 @@ class _addNewReviewState extends State<addNewReview> {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                          Theme.of(context).primaryColor),
+                    ),
                     onPressed: () {
                       print(rate);
                       Provider.of<Reviews_provider>(context, listen: false)
@@ -144,7 +148,9 @@ class _addNewReviewState extends State<addNewReview> {
         bottomNavigationBar: BottomAppBar(
           color: Colors.white,
           child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
               child: Text(
                 'Review guideLines',
                 style: TextStyle(fontSize: 15.0),
