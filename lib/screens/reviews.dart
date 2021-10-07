@@ -34,7 +34,7 @@ class Reviews_screen extends StatelessWidget {
               OrientationBuilder(
                   builder: (context, orientation) =>
                       orientation == Orientation.landscape ||
-                              sizes.maxWidth > 100
+                              sizes.maxWidth > 1200
                           ? landscpe_case(context, sizes)
                           : portrait_case(context, sizes)),
         ),

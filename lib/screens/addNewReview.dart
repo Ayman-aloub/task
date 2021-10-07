@@ -142,7 +142,7 @@ class _addNewReviewState extends State<addNewReview> {
           ),
         ),
         bottomNavigationBar: BottomAppBar(
-          color: Colors.transparent,
+          color: Colors.white,
           child: TextButton(
               onPressed: () {},
               child: Text(
