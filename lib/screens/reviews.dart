@@ -39,6 +39,7 @@ class Reviews_screen extends StatelessWidget {
                           : portrait_case(context, sizes)),
         ),
         bottomNavigationBar: BottomAppBar(
+          color: Colors.white,
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Container(
@@ -51,6 +52,10 @@ class Reviews_screen extends StatelessWidget {
               width: double.infinity,
               height: 40,
               child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Theme.of(context).primaryColor),
+                ),
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (_) => addNewReview()));
