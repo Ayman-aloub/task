@@ -122,10 +122,12 @@ class _addNewReviewState extends State<addNewReview> {
                               rate: rate,
                               comment: _textController.text,
                               date: DateTime.now(),
-                              name: Provider.of<Customer_provider>(context)
+                              name: Provider.of<Customer_provider>(context,
+                                      listen: false)
                                   .customer!
                                   .name,
-                              imageUrl: Provider.of<Customer_provider>(context)
+                              imageUrl: Provider.of<Customer_provider>(context,
+                                      listen: false)
                                   .customer!
                                   .imageUrl));
                       Navigator.of(context).pop();

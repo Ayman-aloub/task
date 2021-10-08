@@ -164,8 +164,22 @@ class Reviews_screen extends StatelessWidget {
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
                         crossAxisCount: 1),
-                    itemBuilder: (_, index) => buildSingleReview(context,
-                        Provider.of<Reviews_provider>(context).reviews[index]),
+                    itemBuilder: (_, index) => SingleReview(
+                        comment: Provider.of<Reviews_provider>(context)
+                            .reviews[index]
+                            .comment,
+                        name: Provider.of<Reviews_provider>(context)
+                            .reviews[index]
+                            .name,
+                        rate: Provider.of<Reviews_provider>(context)
+                            .reviews[index]
+                            .rate,
+                        date: Provider.of<Reviews_provider>(context)
+                            .reviews[index]
+                            .date,
+                        imageUrl: Provider.of<Reviews_provider>(context)
+                            .reviews[index]
+                            .imageUrl),
                     itemCount:
                         Provider.of<Reviews_provider>(context).reviews.length,
                   )
@@ -264,8 +278,24 @@ class Reviews_screen extends StatelessWidget {
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
                         crossAxisCount: 1),
-                    itemBuilder: (_, index) => buildSingleReview(context,
-                        Provider.of<Reviews_provider>(context).reviews[index]),
+                    itemBuilder: (_, index) => SingleReview(
+                        comment: Provider.of<Reviews_provider>(context)
+                            .reviews[index]
+                            .comment,
+                        name: Provider.of<Reviews_provider>(context)
+                            .reviews[index]
+                            .name,
+                        rate: Provider.of<Reviews_provider>(context)
+                            .reviews[index]
+                            .rate,
+                        date: Provider.of<Reviews_provider>(context)
+                            .reviews[index]
+                            .date,
+                        imageUrl: Provider.of<Reviews_provider>(context)
+                            .reviews[index]
+                            .imageUrl),
+                    /*buildSingleReview(context,
+                        Provider.of<Reviews_provider>(context).reviews[index]),*/
                     itemCount:
                         Provider.of<Reviews_provider>(context).reviews.length,
                   )
