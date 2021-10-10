@@ -2,16 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_test/providers/Reviews_provider.dart';
 import 'package:flutter_app_test/providers/customerprovider.dart';
 import 'package:flutter_app_test/screens/addNewReview.dart';
+import 'package:flutter_app_test/screens/onboardingScreen.dart';
 import 'package:flutter_app_test/screens/profile.dart';
 import 'package:flutter_app_test/screens/reviews.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  late bool isonboarding;
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  bool value = await prefs.getBool('onboarding') ?? false;
+  if (value == false) {
+    isonboarding = true;
+  } else {
+    isonboarding = false;
+  }
+
+  runApp(MyApp(onboarding: isonboarding));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  late bool onboarding;
+  MyApp({Key? key, required this.onboarding}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -26,16 +40,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
-        home: Reviews_screen(),
+        home: onboarding ? onboardingScreen() : Reviews_screen(),
       ),
     );
   }
 }
-
-/*
-* floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-* */
