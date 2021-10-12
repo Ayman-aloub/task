@@ -41,6 +41,8 @@ dependencies:
   carousel_slider: ^4.0.0
   smooth_page_indicator: ^1.0.0+2
   shared_preferences: ^2.0.8
+  transformer_page_view: ^0.1.6
+  page_transition: ^2.0.4
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +73,7 @@ flutter:
     - assets/3.jpg
     - assets/4.jpg
     - assets/5.jpg
+    - assets/BeautyHublogo3.gif
 
 
 
