@@ -5,29 +5,51 @@ import 'package:flutter_app_test/screens/addNewReview.dart';
 import 'package:flutter_app_test/screens/onboardingScreen.dart';
 import 'package:flutter_app_test/screens/profile.dart';
 import 'package:flutter_app_test/screens/reviews.dart';
+import 'package:flutter_app_test/screens/splashScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  late bool isonboarding;
-  SharedPreferences prefs = await SharedPreferences.getInstance();
 
-  bool value = await prefs.getBool('onboarding') ?? false;
-  if (value == false) {
-    isonboarding = true;
-  } else {
-    isonboarding = false;
-  }
-
-  runApp(MyApp(onboarding: isonboarding));
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  late bool onboarding;
-  MyApp({Key? key, required this.onboarding}) : super(key: key);
+class MyApp extends StatefulWidget {
+  //late bool onboarding;
+  MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool? isonboarding;
+  bool? isLoadind = true;
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 18), () {
+// Here you can write your code
+
+      setState(() {
+        isLoadind = false;
+      });
+    });
+    SharedPreferences.getInstance().then((value) {
+      bool x = value.getBool('onboarding') ?? false;
+      if (x == false) {
+        setState(() {
+          isonboarding = true;
+        });
+      } else {
+        setState(() {
+          isonboarding = false;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -40,7 +62,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
-        home: onboarding ? onboardingScreen() : Reviews_screen(),
+        home: (isonboarding != null && isLoadind == false)
+            ? (isonboarding! ? boardingScreen() : Reviews_screen())
+            : SplashScreen(),
       ),
     );
   }
