@@ -30,14 +30,21 @@ class _PortfiloState extends State<Portfilo> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,
-          title: Center(
-            child: Text(
-              'My profile',
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 15,
+          centerTitle: true,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Center(
+                child: Text(
+                  'My profile',
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 15,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
