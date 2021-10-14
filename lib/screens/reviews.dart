@@ -15,14 +15,20 @@ class Reviews_screen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,
-          title: Center(
-            child: Text(
-              ' Reviews',
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 15,
+          centerTitle: true,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                ' Reviews',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: 15,
+                ),
               ),
-            ),
+            ],
           ),
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
@@ -201,71 +207,75 @@ class Reviews_screen extends StatelessWidget {
               child: Column(
                 children: [
                   Expanded(
+                      flex: 1,
                       child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '${Provider.of<Reviews_provider>(context).appReview}',
-                        style: TextStyle(
-                            fontSize: 20,
-                            //color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.w300),
-                      ),
-                      RatingBarIndicator(
-                        rating: Provider.of<Reviews_provider>(context)
-                            .appReview
-                            .toDouble(),
-                        itemBuilder: (context, index) => Icon(
-                          Icons.star,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        itemCount: 5,
-                        itemSize: sizes.maxWidth > 750.0 ? 30.0 : 25.0,
-                        direction: Axis.horizontal,
-                      ),
-                    ],
-                  )),
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '${Provider.of<Reviews_provider>(context).appReview}',
+                            style: TextStyle(
+                                fontSize: 20,
+                                //color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w300),
+                          ),
+                          RatingBarIndicator(
+                            rating: Provider.of<Reviews_provider>(context)
+                                .appReview
+                                .toDouble(),
+                            itemBuilder: (context, index) => Icon(
+                              Icons.star,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            itemCount: 5,
+                            itemSize: sizes.maxWidth > 750.0 ? 30.0 : 25.0,
+                            direction: Axis.horizontal,
+                          ),
+                        ],
+                      )),
                   Expanded(
+                      flex: 2,
                       child: Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        buildRow(
-                            context,
-                            5,
-                            Provider.of<Reviews_provider>(
-                              context,
-                            ).countReviwsfive.toString()),
-                        buildRow(
-                            context,
-                            4,
-                            Provider.of<Reviews_provider>(
-                              context,
-                            ).countReviwsfour.toString()),
-                        buildRow(
-                            context,
-                            3,
-                            Provider.of<Reviews_provider>(
-                              context,
-                            ).countReviwsThree.toString()),
-                        buildRow(
-                            context,
-                            2,
-                            Provider.of<Reviews_provider>(
-                              context,
-                            ).countReviwsTwo.toString()),
-                        buildRow(
-                            context,
-                            1,
-                            Provider.of<Reviews_provider>(
-                              context,
-                            ).countReviwsOne.toString()),
-                      ],
-                    ),
-                  )),
+                        padding: const EdgeInsets.only(left: 20),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              buildRow(
+                                  context,
+                                  5,
+                                  Provider.of<Reviews_provider>(
+                                    context,
+                                  ).countReviwsfive.toString()),
+                              buildRow(
+                                  context,
+                                  4,
+                                  Provider.of<Reviews_provider>(
+                                    context,
+                                  ).countReviwsfour.toString()),
+                              buildRow(
+                                  context,
+                                  3,
+                                  Provider.of<Reviews_provider>(
+                                    context,
+                                  ).countReviwsThree.toString()),
+                              buildRow(
+                                  context,
+                                  2,
+                                  Provider.of<Reviews_provider>(
+                                    context,
+                                  ).countReviwsTwo.toString()),
+                              buildRow(
+                                  context,
+                                  1,
+                                  Provider.of<Reviews_provider>(
+                                    context,
+                                  ).countReviwsOne.toString()),
+                            ],
+                          ),
+                        ),
+                      )),
                 ],
               )),
           Expanded(
@@ -315,13 +325,13 @@ class Reviews_screen extends StatelessWidget {
               Text(
                 id.toString(),
                 style: TextStyle(
-                  fontSize: sizes.maxWidth > 750 ? 17 : 11,
+                  fontSize: sizes.maxWidth > 750 ? 20 : 15,
                 ),
               ),
               Icon(
                 Icons.star,
                 color: Theme.of(context).primaryColor,
-                size: sizes.maxWidth > 750 ? 17 : 11.0,
+                size: sizes.maxWidth > 750 ? 20 : 15.0,
               ),
               SizedBox(
                 width: 10,
@@ -338,7 +348,7 @@ class Reviews_screen extends StatelessWidget {
               Text(
                 count,
                 style: TextStyle(
-                    fontSize: sizes.maxWidth > 750 ? 17 : 11,
+                    fontSize: sizes.maxWidth > 750 ? 20 : 15,
                     color: Colors.black54),
               ),
             ],

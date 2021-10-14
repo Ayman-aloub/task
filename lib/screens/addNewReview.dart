@@ -30,14 +30,19 @@ class _addNewReviewState extends State<addNewReview> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,
-          title: Center(
-            child: Text(
-              'My review',
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 15,
+          centerTitle: true,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'My review',
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: 15,
+                ),
               ),
-            ),
+            ],
           ),
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
@@ -75,10 +80,10 @@ class _addNewReviewState extends State<addNewReview> {
                 RatingBar.builder(
                   minRating: 1,
                   initialRating: 1,
-                  itemSize: 18.0,
+                  itemSize: 33.0,
                   direction: Axis.horizontal,
                   itemCount: 5,
-                  itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                  itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
                   itemBuilder: (context, _) => Icon(
                     Icons.star,
                     color: Theme.of(context).primaryColor,
