@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 18), () {
+    Future.delayed(const Duration(seconds: 9), () {
 // Here you can write your code
 
       setState(() {
